@@ -152,5 +152,27 @@ namespace BaiTap3
             products.Sort(new BalanceCompare());
         }
 
+        public Product FindByID(int productID)
+        {
+            foreach (Product product in products)
+            {
+                if (product.ProductID == productID)
+                {
+                    return product;
+                }
+            }
+            return null;
+        }
+        public Product FindByName(string NamePd)
+        {
+            foreach (Product product in products)
+            {
+                if (product.NamePD == NamePd)
+                {
+                    return product;
+                }
+            }
+            return null;
+        }
     }
 }
