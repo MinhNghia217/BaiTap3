@@ -151,6 +151,7 @@ namespace BaiTap3
         {
             products.Sort(new BalanceCompare());
         }
+<<<<<<< HEAD:BaiTap3/ProductList.cs
 
         public Product FindByID(int productID)
         {
@@ -159,10 +160,21 @@ namespace BaiTap3
                 if (product.ProductID == productID)
                 {
                     return product;
+=======
+        
+        public Account FindByID(int accountID)
+        {
+            foreach (Account account in accounts)
+            {
+                if (account.AccountID == accountID)
+                {
+                    return account;
+>>>>>>> 4fac511e0d01a67a23e3752699e38d981619e04d:BaiTap3/AccountList.cs
                 }
             }
             return null;
         }
+<<<<<<< HEAD:BaiTap3/ProductList.cs
         public Product FindByName(string NamePd)
         {
             foreach (Product product in products)
@@ -170,6 +182,37 @@ namespace BaiTap3
                 if (product.NamePD == NamePd)
                 {
                     return product;
+=======
+        public Account FindByFirstName(string firstname)
+        {
+            foreach (Account account in accounts)
+            {
+                if (account.FirstName == firstname)
+                {
+                    return account;
+                }
+            }
+            return null;
+        }
+        public Account FindByLastName(string lastname)
+        {
+            foreach (Account account in accounts)
+            {
+                if (account.LastName == lastname)
+                {
+                    return account;
+                }
+            }
+            return null;
+        }
+        public Account FindByBalance(decimal balance)
+        {
+            foreach (Account account in accounts)
+            {
+                if (account.Balance == balance)
+                {
+                    return account;
+>>>>>>> 4fac511e0d01a67a23e3752699e38d981619e04d:BaiTap3/AccountList.cs
                 }
             }
             return null;
