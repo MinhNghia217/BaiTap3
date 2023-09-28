@@ -151,6 +151,50 @@ namespace BaiTap3
         {
             accounts.Sort(new BalanceCompare());
         }
-
+        
+        public Account FindByID(int accountID)
+        {
+            foreach (Account account in accounts)
+            {
+                if (account.AccountID == accountID)
+                {
+                    return account;
+                }
+            }
+            return null;
+        }
+        public Account FindByFirstName(string firstname)
+        {
+            foreach (Account account in accounts)
+            {
+                if (account.FirstName == firstname)
+                {
+                    return account;
+                }
+            }
+            return null;
+        }
+        public Account FindByLastName(string lastname)
+        {
+            foreach (Account account in accounts)
+            {
+                if (account.LastName == lastname)
+                {
+                    return account;
+                }
+            }
+            return null;
+        }
+        public Account FindByBalance(decimal balance)
+        {
+            foreach (Account account in accounts)
+            {
+                if (account.Balance == balance)
+                {
+                    return account;
+                }
+            }
+            return null;
+        }
     }
 }
