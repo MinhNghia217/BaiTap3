@@ -10,7 +10,7 @@ namespace BaiTap3
     {
         static void Main(string[] args)
         {
-            AccountList accountList = new AccountList();
+            ProductList productList = new ProductList();
             bool exit = false;
             bool sort = false;
 
@@ -18,46 +18,46 @@ namespace BaiTap3
             {
                 Console.Clear();
                 Console.WriteLine("=================================");
-                Console.WriteLine("||\u001b[33m          ACCOUNT MENU       \u001b[0m||");
+                Console.WriteLine("||\u001b[33m          PRODUCT MENU       \u001b[0m||");
                 Console.WriteLine("=================================");
-                Console.WriteLine("||  \u001b[36m1. Add Account\u001b[0m             ||");
-                Console.WriteLine("||  \u001b[36m2. Save Accounts\u001b[0m           ||");
-                Console.WriteLine("||  \u001b[36m3. Load Accounts\u001b[0m           ||");
+                Console.WriteLine("||  \u001b[36m1. Add Product\u001b[0m             ||");
+                Console.WriteLine("||  \u001b[36m2. Save Products\u001b[0m           ||");
+                Console.WriteLine("||  \u001b[36m3. Load Products\u001b[0m           ||");
                 Console.WriteLine("||  \u001b[36m4. Generate Report\u001b[0m         ||");
-                Console.WriteLine("||  \u001b[36m5. Remove Account\u001b[0m          ||");
-                Console.WriteLine("||  \u001b[36m6. Sort Account List\u001b[0m       ||");
+                Console.WriteLine("||  \u001b[36m5. Remove Product\u001b[0m          ||");
+                Console.WriteLine("||  \u001b[36m6. Sort Product List\u001b[0m       ||");
                 Console.WriteLine("||  \u001b[36m7. Exit\u001b[0m                    ||");
                 Console.WriteLine("=================================");
                 Console.Write("Enter your choice (1-7): ");
 
                 string choice = Console.ReadLine();
-                string filePath = "C:\\Baitap3\\Data\\accounts.txt";
+                string filePath = "D:\\Học Tập\\C#\\BaiTap3\\BaiTap3\\products.txt";
 
                 switch (choice)
                 {
                     case "1":
                         Console.WriteLine("=================================");
-                        Account newacc = new Account();
+                        Product newacc = new Product();
                         newacc.FillInfo();
-                        accountList.NewAccount(newacc);
+                        productList.NewProduct(newacc);
                         break;
                     case "2":
                         Console.WriteLine("=================================");
-                        accountList.SaveFile(filePath);
+                        productList.SaveFile(filePath);
                         break;
                     case "3":
                         Console.WriteLine("=================================");
-                        accountList.LoadFile(filePath);
+                        productList.LoadFile(filePath);
                         break;
                     case "4":
                         Console.WriteLine("=================================");
-                        accountList.Report();
+                        productList.Report();
                         break;
                     case "5":
                         Console.WriteLine("=================================");
-                        Console.Write("Enter id account to remove: ");
-                        string accountId = Console.ReadLine();
-                        accountList.RemoveAccount(int.Parse(accountId));
+                        Console.Write("Enter id Product to remove: ");
+                        string productID = Console.ReadLine();
+                        productList.RemoveProduct(int.Parse(productID));
                         break;
                     case "6":
                         Console.WriteLine("=================================");
@@ -75,11 +75,11 @@ namespace BaiTap3
                 while(sort)
                 {
                     Console.WriteLine("=================================");
-                    Console.WriteLine("||\u001b[33m       SORT ACCOUNT LIST     \u001b[0m||");
+                    Console.WriteLine("||\u001b[33m       SORT PRODUCT LIST     \u001b[0m||");
                     Console.WriteLine("=================================");
-                    Console.WriteLine("||  \u001b[36m1. Sort By Account ID\u001b[0m      ||");
-                    Console.WriteLine("||  \u001b[36m2. Sort By First Name\u001b[0m      ||");
-                    Console.WriteLine("||  \u001b[36m3. Sort By Balance\u001b[0m         ||");
+                    Console.WriteLine("||  \u001b[36m1. Sort By Product ID\u001b[0m      ||");
+                    Console.WriteLine("||  \u001b[36m2. Sort By Product name\u001b[0m      ||");
+                    Console.WriteLine("||  \u001b[36m3. Sort By Count\u001b[0m         ||");
                     Console.WriteLine("||  \u001b[36m4. Exit\u001b[0m                    ||");
                     Console.WriteLine("=================================");
                     Console.Write("Enter your choice (1-4): ");
@@ -89,18 +89,18 @@ namespace BaiTap3
                     {
                         case "1":
                             Console.WriteLine("=================================");
-                            accountList.SortByID();
-                            accountList.Report();
+                            productList.SortByID();
+                            productList.Report();
                             break;
                         case "2":
                             Console.WriteLine("=================================");
-                            accountList.SortByFirstName();
-                            accountList.Report();
+                            productList.SortByFirstName();
+                            productList.Report();
                             break;
                         case "3":
                             Console.WriteLine("=================================");
-                            accountList.SortByBalance();
-                            accountList.Report();
+                            productList.SortByCount();
+                            productList.Report();
                             break;
                         case "4":
                             sort = false;

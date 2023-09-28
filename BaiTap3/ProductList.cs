@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace BaiTap3
 {
-    public class AccountList
+    public class ProductList
     {
-        private ArrayList accounts;
+        private ArrayList products;
 
         // Constructor
-        public AccountList()
+        public ProductList()
         {
-            accounts = new ArrayList();
+            products = new ArrayList();
         }
 
 
-        // Thêm một account mới vào danh sách
-        public void NewAccount(Account account)
+        // Thêm một san pham mới vào danh sách
+        public void NewProduct(Product product)
         {
-            accounts.Add(account);
+            products.Add(product);
         }
 
         // Lưu danh sách account vào file
@@ -42,9 +42,9 @@ namespace BaiTap3
                 StreamWriter writer = new StreamWriter(output);
 
                 //Duyệt qua từng đối tượng trong Accounts
-                foreach (Account acc in accounts) {
+                foreach (Product acc in products) {
                     //Lưu các thông tin của một account trên dòng, phân cách bằng dấu ;
-                    writer.WriteLine("{0};{1};{2};{3}", acc.AccountID, acc.FirstName, acc.LastName, acc.Balance);
+                    writer.WriteLine("{0};{1};{2};{3}", acc.ProductID, acc.NamePD, acc.TypePD, acc.CountPD);
                 } 
                 //Đóng kết nối
                 writer.Close();
@@ -77,13 +77,13 @@ namespace BaiTap3
 
                         string[] list = str.Split(';');
 
-                        int accountID = int.Parse(list[0]);
-                        string firstName = list[1];
-                        string lastName = list[2];
-                        decimal balance = decimal.Parse(list[3]);
+                        int productID = int.Parse(list[0]);
+                        string NamePD = list[1];
+                        string TypePD = list[2];
+                        decimal count = decimal.Parse(list[3]);
 
-                        Account account = new Account(accountID, firstName, lastName, balance);
-                        accounts.Add(account);
+                        Product product = new Product(productID, NamePD, TypePD, count);
+                        products.Add(product);
                     }
                     catch (FormatException ex)
                     {
@@ -95,7 +95,7 @@ namespace BaiTap3
                 //Đóng kết nối
                 reader.Close();
                 input.Close();
-            }
+            }               
             catch (IOException ex)
             {
                 Console.WriteLine("Error loading accounts from file: " + ex.Message);
@@ -105,30 +105,30 @@ namespace BaiTap3
         // Xuất ra màn hình tất cả danh sách các account
         public void Report()
         {
-            Console.WriteLine("Account Report:");
-            foreach (Account account in accounts)
+            Console.WriteLine("Product Report:");
+            foreach (Product product in products)
             {
-                account.Query();
+                product.Query();
                 Console.WriteLine("--------------------");
             }
         }
 
         // Xóa một account khỏi danh sách
-        public void RemoveAccount(int accountID)
+        public void RemoveProduct(int productID)
         {
             try
             {
-                Account accountToFind = new Account(accountID);
-                int index = accounts.BinarySearch(accountToFind, new AccountComparer());
+                Product productToFind = new Product(productID);
+                int index = products.BinarySearch(productToFind, new AccountComparer());
 
                 if (index >= 0)
                 {
-                    accounts.RemoveAt(index);
-                    Console.WriteLine("Account with AccountID {0} removed successfully.", accountID);
+                    products.RemoveAt(index);
+                    Console.WriteLine("Account with ProductID {0} removed successfully.", productID);
                 }
                 else
                 {
-                    Console.WriteLine("Account with AccountID {0} not found.", accountID);
+                    Console.WriteLine("Account with ProductID {0} not found.", productID);
                 }
             }
             catch (Exception ex)
@@ -139,17 +139,17 @@ namespace BaiTap3
 
         public void SortByID()
         {
-            accounts.Sort(new AccountIDComparer());
+            products.Sort(new AccountIDComparer());
         }
 
         public void SortByFirstName()
         {
-            accounts.Sort(new FirstNameCompare());
+            products.Sort(new FirstNameCompare());
         }
 
-        public void SortByBalance()
+        public void SortByCount()
         {
-            accounts.Sort(new BalanceCompare());
+            products.Sort(new BalanceCompare());
         }
 
     }

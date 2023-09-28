@@ -11,11 +11,11 @@ namespace BaiTap3
     {
         public int Compare(object? x, object? y)
         {
-            Account account1 = (Account)x;
-            Account account2 = (Account)y;
+            Product account1 = (Product)x;
+            Product account2 = (Product)y;
 
             // So sánh theo AccountID
-            return account1.AccountID.CompareTo(account2.AccountID);
+            return account1.ProductID.CompareTo(account2.ProductID);
         }
     }
 }
