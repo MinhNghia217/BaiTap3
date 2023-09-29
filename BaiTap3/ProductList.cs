@@ -59,6 +59,7 @@ namespace BaiTap3
         // Lấy danh sách account từ file vào danh sách
         public void LoadFile(string filePath)
         {
+            products.Clear();
             try
             {
                 //Tạo luồng đọc file
@@ -124,7 +125,7 @@ namespace BaiTap3
                 if (index >= 0)
                 {
                     products.RemoveAt(index);
-                    Console.WriteLine("Account with ProductID {0} removed successfully.", productID);
+                   // Console.WriteLine("Account with ProductID {0} removed successfully.", productID);
                 }
                 else
                 {
@@ -151,6 +152,58 @@ namespace BaiTap3
         {
             products.Sort(new BalanceCompare());
         }
+        public Product FindByName(string NamePd)
+        {
+            foreach (Product product in products)
+            {
+                if (product.NamePD == NamePd)
+                {
+                    return product;
+                }
+            }
+            return null;
+        }
+        public Product FindByID(int productID)
+        {
+            foreach (Product product in products)
+            {
+                if (product.ProductID == productID)
+                {
+                    return product;
+                }
+            }
+            return null;
+        }
 
+
+        public bool FindByIDAndEdit(int productID)
+        {
+            foreach (Product product in products)
+            {
+                if (product.ProductID == productID)
+                {
+                    int id= product.ProductID;
+                    string name;
+                    string type;
+                    decimal count;
+                    
+                    Console.WriteLine("Enter Name");
+                    name = Console.ReadLine();
+                    Console.WriteLine("Enter Type");
+                    type = Console.ReadLine();
+                    Console.WriteLine("Enter Count");
+                    count = Convert.ToDecimal(Console.ReadLine());
+
+                    RemoveProduct(product.ProductID);
+
+                    Product temp = new Product(id, name, type, count);
+
+                    products.Add(temp);
+                    return true;
+                }
+            }
+            return false;
+
+        }
     }
 }

@@ -13,7 +13,8 @@ namespace BaiTap3
             ProductList productList = new ProductList();
             bool exit = false;
             bool sort = false;
-
+            Product findProduct;
+            bool find=false;
             while (!exit)
             {
                 Console.Clear();
@@ -26,9 +27,13 @@ namespace BaiTap3
                 Console.WriteLine("||  \u001b[36m4. Generate Report\u001b[0m         ||");
                 Console.WriteLine("||  \u001b[36m5. Remove Product\u001b[0m          ||");
                 Console.WriteLine("||  \u001b[36m6. Sort Product List\u001b[0m       ||");
-                Console.WriteLine("||  \u001b[36m7. Exit\u001b[0m                    ||");
+                Console.WriteLine("||  \u001b[36m7. Find Product\u001b[0m            ||");
+
+                Console.WriteLine("||  \u001b[36m8. Edit Product\u001b[0m            ||");
+
+                Console.WriteLine("||  \u001b[36m9. Exit\u001b[0m                    ||");
                 Console.WriteLine("=================================");
-                Console.Write("Enter your choice (1-7): ");
+                Console.Write("Enter your choice (1-8): ");
 
                 string choice = Console.ReadLine();
                 string filePath = "D:\\Học Tập\\C#\\BaiTap3\\BaiTap3\\products.txt";
@@ -64,6 +69,24 @@ namespace BaiTap3
                         sort = true;
                         break;
                     case "7":
+                        Console.WriteLine("=================================");
+                        find = true;
+                        break;
+                    case "8":
+                            Console.WriteLine("Enter ID:");
+                            int ID = Convert.ToInt32(Console.ReadLine());
+                            bool temp = productList.FindByIDAndEdit(ID);
+                            if (temp == false)
+                            {
+                                Console.WriteLine("Product ID is not valid");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Thanh cong");
+                            }
+                            break;
+                        break;
+                    case "9":
                         exit = true;
                         break;
                     default:
@@ -104,6 +127,56 @@ namespace BaiTap3
                             break;
                         case "4":
                             sort = false;
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
+                    }
+                }
+                while (find)
+                {
+                    Console.WriteLine("=================================");
+                    Console.WriteLine("||\u001b[33m       FIND ACCOUNT LIST     \u001b[0m||");
+                    Console.WriteLine("=================================");
+                    Console.WriteLine("||  \u001b[36m1. Find By Product ID\u001b[0m      ||");
+                    Console.WriteLine("||  \u001b[36m2. Find By Name\u001b[0m            ||");
+                    Console.WriteLine("||  \u001b[36m3. Exit\u001b[0m                    ||");
+                    Console.WriteLine("=================================");
+                    Console.Write("Enter your choice (1-3): ");
+                    string choiceFind = Console.ReadLine();
+
+                    switch (choiceFind)
+                    {
+                        case "1":
+                            Console.WriteLine("=================================");
+                            Console.WriteLine("Enter ID:");
+                            int ID = Convert.ToInt32(Console.ReadLine());
+                            findProduct = productList.FindByID(ID);
+                            if (findProduct == null)
+                            {
+                                Console.WriteLine("Product ID is not valid");
+                            }
+                            else
+                            {
+                                findProduct.Query();
+                            }
+                            break;
+                        case "2":
+                            Console.WriteLine("=================================");
+                            Console.WriteLine("Enter Name Product:");
+                            string Name = Console.ReadLine();
+                            findProduct = productList.FindByName(Name);
+                            if (findProduct == null)
+                            {
+                                Console.WriteLine("Product is not valid");
+                            }
+                            else
+                            {
+                                findProduct.Query();
+                            }
+                            break;
+                        case "3":
+                            find = false;
                             break;
                         default:
                             Console.WriteLine("Invalid choice. Please try again.");
