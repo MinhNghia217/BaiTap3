@@ -8,8 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BaiTap3
-<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\Admin\Desktop\1\BaiTap3\BaiTap3\
-=======
-build_property.ProjectDir = C:\Users\Admin\Desktop\c#\BaiTap3\BaiTap3\
->>>>>>> 4fac511e0d01a67a23e3752699e38d981619e04d
